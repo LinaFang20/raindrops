@@ -51,7 +51,7 @@ class RainDrops:
 		#Spacing between each drop is equal to one drop width.
 		rain = Rain(self)
 		rain_width, rain_height = rain.rect.size
-		available_space_x = self.settings.screen_width -(2*rain_width)
+		available_space_x = self.settings.screen_width -rain_width
 		number_rains_x = available_space_x // (2*rain_width)
 
 		#Determine the number of rows of rain drops that fit on the screen.
@@ -74,8 +74,8 @@ class RainDrops:
 		rain.rect.y = rain.rect.height + 2*rain.rect.height * row_number
 		
 		#Randomize the rains further
-		rain.rect.x += randint(-5, 5)
-		rain.rect.y += randint(-5, 5)
+		rain.rect.x += randint(-20, 20)
+		rain.rect.y += randint(-20, 20)
 
 		self.rains.add(rain)
 
