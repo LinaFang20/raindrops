@@ -1,6 +1,7 @@
 #Create a grid of raindrops that fall and disappear from bottom of the screen.
 import sys
 import pygame
+from random import randint
 from settings import Settings
 from rain import Rain
 
@@ -13,12 +14,12 @@ class RainDrops:
 		pygame.init()
 
 		self.settings = Settings()
-		self.screen = pygame.display.set_mode(0,0, pygame.FULLSCREEN)
+		self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
 		self.settings.screen_width = self.screen.get_rect().width
 		self.settings.screen_height = self.screen.get_rect().height
 		pygame.display.set_caption("Rain Drops")
 
-		self.rains = pygame.sprite.group()
+		self.rains = pygame.sprite.Group()
 		self._create_rain()
 
 	def run_game(self):
@@ -61,7 +62,7 @@ class RainDrops:
 		#Create the grid of rain drops.
 		for row_number in range(number_rows):
 			for rain_number in range (number_rains_x):
-				self._create_rain(rain_number, row_number)
+				self._create_drop(rain_number, row_number)
 
 	def _create_drop(self, rain_number, row_number):
 		"""Create a single rain drop and place it in the row."""
@@ -85,7 +86,7 @@ class RainDrops:
 
 		pygame.display.flip()
 
-f __name__ == '__main__':
+if __name__ == '__main__':
 	#Make a new game instance, and run the game.
 	rd = RainDrops()
 	rd.run_game()
